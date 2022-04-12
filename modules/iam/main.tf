@@ -22,7 +22,7 @@ resource "aws_iam_role_policy_attachment" "default" {
 resource "aws_iam_policy" "default" {
   name = var.iam_name
   path = "/"
-  description = "Policy for the Notebook Instance to manage training jobs, models and endpoints"
+  description = "Policy for the Notebook Instance to manage training jobs"
   policy = data.aws_iam_policy_document.sagemaker_role_policy.json
 }
 
@@ -52,12 +52,7 @@ data "aws_iam_policy_document" "sagemaker_role_policy" {
       "sagemaker:DescribeTrainingJob",
       "sagemaker:CreateModel",
       "sagemaker:DescribeModel",
-      "sagemaker:DeleteModel",
-      "sagemaker:CreateEndpoint",
-      "sagemaker:CreateEndpointConfig",
-      "sagemaker:DescribeEndpoint",
-      "sagemaker:DescribeEndpointConfig",
-      "sagemaker:DeleteEndpoint"
+      "sagemaker:DeleteModel"
     ]
     resources = [
       "arn:aws:sagemaker:${var.aws_region}:${data.aws_caller_identity.current.account_id}:*"
