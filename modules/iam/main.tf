@@ -74,17 +74,6 @@ data "aws_iam_policy_document" "sagemaker_role_policy" {
   statement {
     effect = "Allow"
     actions = [
-      "ec2:CreateVpcEndpoint",
-      "ec2:DescribeRouteTables"
-    ]
-    resources = [
-      "*"
-    ]
-  }
-
-  statement {
-    effect = "Allow"
-    actions = [
       "cloudwatch:PutMetricData",
       "cloudwatch:GetMetricData",
       "cloudwatch:GetMetricStatistics",
